@@ -31,6 +31,6 @@ class UserQuery extends Query
 
     public function resolve($root, $args)
     {
-        return User::where('user_id', $args['id'])->first();
+        return User::where('id', $args['id'])->first();
     }
 }

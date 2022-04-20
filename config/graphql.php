@@ -105,7 +105,7 @@ return [
     // ]
     //
     'types' => [
-        // ExampleType::class,
+        App\GraphQL\Types\UserType::class
         // ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,
     ],

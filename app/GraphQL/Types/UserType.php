@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\GraphQL\Types;
+
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
@@ -19,7 +21,7 @@ class UserType extends GraphQLType
             'id' => [
                 'type' => Type::nonNull(Type::int()),
                 'description' => 'ID of user',
-                'alias' => 'user_id'
+                'alias' => 'id'
             ],
             'name' => [
                 'type' => Type::nonNull(Type::string())
