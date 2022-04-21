@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-function Form() {
-    const [weight, setWeight] = useState("");
+function Form(props) {
     return (
         <form>
             <div className="card-body">
-                <input type="text" name="weight" placeholder="your weight" onChange={e => setWeight(e.target.value)}/>
-                <button type="submit">store</button>
-                { weight }
+                <input type="text" name="weight" placeholder="your weight" onChange={e => props.setWeight(e.target.value)}/>
+                <button type="submit" onClick={props.getWeather}>store</button>
             </div>
         </form>
     );
