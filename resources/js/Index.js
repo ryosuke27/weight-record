@@ -6,11 +6,21 @@ import axios from 'axios';
 
 function Index() {
 	const [weight, setWeight] = useState("");
+	const [results, setResults] = useState({
+		weight: "",
+		name: "",
+		date: ""
+	})
 	const getWeight = (e) => {
 		e.preventDefault();
-		// console.log(e);
 		// TODO:GraphQLでweightdate取得
-		axios.get().then(res => console.log(e))
+		axios.get('http://localhost:8000/').then(res => {
+			setResults({
+				weight: "res.data.weight",
+				name: "res.data.name",
+				date: "res.data.date"
+			})
+		})
 	}
 	return (
 		<div className="app">
@@ -20,7 +30,7 @@ function Index() {
 						<div className="card"></div>
 						<Title />
 						<Form setWeight={setWeight} getWeight={getWeight}/>
-						<Result />
+						<Result results={results} />
 					</div>
 				</div>
 			</div>

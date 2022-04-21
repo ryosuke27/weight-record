@@ -5,7 +5,7 @@ function Form(props) {
         <form>
             <div className="card-body">
                 <input type="text" name="weight" placeholder="your weight" onChange={e => props.setWeight(e.target.value)}/>
-                <button type="submit" onClick={props.getWeather}>store</button>
+                <button type="submit" onClick={props.getWeight}>store</button>
             </div>
         </form>
     );

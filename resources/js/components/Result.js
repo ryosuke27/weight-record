@@ -1,6 +1,6 @@
-const Result = () => {
+const Result = (props) => {
 	return (
-		<h1>Weight Data</h1>
+		<h1>Weight Data{props.results.weight}</h1>
 	);
 };
 
