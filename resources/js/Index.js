@@ -20,11 +20,11 @@ function Index() {
 		var protocol = location.protocol;
 		var url = location.host;
 		// TODO:GraphQLでweightdate取得
-		axios.get(protocol + '//' + url + '/graphql?query=query+UserQuery{user(id:1){id, email}}').then(res => {
+		axios.get(protocol + '//' + url + '/graphql?query=query+RecordQuery{record(user_id:1){user_id, weight}}').then(res => {
 			setResults({
-				weight: "res.data.weight",
-				name: "res.data.name",
-				date: "res.data.date"
+				weight: res.data.data.record.weight,
+				user_id: res.data.data.record.user_id,
+				// date: res.data.data.created_at
 			})
 		})
 	}
