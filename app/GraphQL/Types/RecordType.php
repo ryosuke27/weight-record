@@ -27,6 +27,9 @@ class RecordType extends GraphQLType
             ],
             'weight' => [
                 'type' => Type::int()
+            ],
+            'created_at' => [
+                'type' => Type::string()
             ]
         ];
     }

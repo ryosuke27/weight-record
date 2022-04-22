@@ -36,6 +36,6 @@ class RecordQuery extends Query
 
     public function resolve($root, $args)
     {
-        return Record::where('user_id', $args['id'])->first();
+        return Record::where('user_id', $args['user_id'])->first();
     }
 }
