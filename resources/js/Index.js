@@ -4,6 +4,10 @@ import Form from './components/Form';
 import Result from './components/Result';
 import axios from 'axios';
 
+axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 function Index() {
 	const [weight, setWeight] = useState("");
 	const [results, setResults] = useState({
@@ -13,12 +17,14 @@ function Index() {
 	})
 	const getWeight = (e) => {
 		e.preventDefault();
+		var protocol = location.protocol;
+		var url = location.host;
 		// TODO:GraphQLでweightdate取得
-		axios.get('http://localhost:8000/').then(res => {
+		axios.get(protocol + '//' + url + '/graphql?query=mutation+record{createRecord(user_id:1, weight:' + weight + '){user_id, weight}}').then(res => {
 			setResults({
-				weight: "res.data.weight",
-				name: "res.data.name",
-				date: "res.data.date"
+				weight: res.data.data.record.weight,
+				user_id: res.data.data.record.user_id,
+				// date: res.data.data.created_at
 			})
 		})
 	}

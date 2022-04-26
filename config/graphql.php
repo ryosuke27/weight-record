@@ -75,13 +75,15 @@ return [
         'default' => [
             'query' => [
                 App\GraphQL\Queries\UserQuery::class,
+                App\GraphQL\Queries\RecordQuery::class,
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                App\GraphQL\Mutations\CreateRecordMutation::class,
             ],
             // The types only available in this schema
             'types' => [
                 App\GraphQL\Types\UserType::class,
+                App\GraphQL\Types\RecordType::class,
             ],
 
             // Laravel HTTP middleware
