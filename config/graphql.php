@@ -78,7 +78,7 @@ return [
                 App\GraphQL\Queries\RecordQuery::class,
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                App\GraphQL\Mutations\CreateRecordMutation::class,
             ],
             // The types only available in this schema
             'types' => [
