@@ -22,8 +22,8 @@ function Index() {
 		// TODO:GraphQLでweightdate取得
 		axios.get(protocol + '//' + url + '/graphql?query=mutation+record{createRecord(user_id:1, weight:' + weight + '){user_id, weight}}').then(res => {
 			setResults({
-				weight: res.data.data.record.weight,
-				user_id: res.data.data.record.user_id,
+				weight: res.data.data.createRecord.weight,
+				user_id: res.data.data.createRecord.user_id,
 				// date: res.data.data.created_at
 			})
 		})
