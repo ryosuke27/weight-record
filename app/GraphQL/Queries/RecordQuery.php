@@ -15,27 +15,27 @@ use Rebing\GraphQL\Support\Facades\GraphQL;
 class RecordQuery extends Query
 {
     protected $attributes = [
-        'name' => 'record',
+        'name' => 'records',
         'description' => 'A query'
     ];
 
     public function type(): Type
     {
-        return GraphQL::type('Record');
+        return Type::nonNull(Type::listOf(Type::nonNull(GraphQL::type('Record'))));
     }
 
-    public function args(): array
-    {
-        return [
-            'user_id' => [
-                'type' => Type::int(),
-                'rules' => ['required']
-            ]
-        ];
-    }
+    // public function args(): array
+    // {
+    //     return [
+    //         'user_id' => [
+    //             'type' => Type::int(),
+    //             'rules' => ['required']
+    //         ]
+    //     ];
+    // }
 
-    public function resolve($root, $args)
+    public function resolve($root, array $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-        return Record::where('user_id', $args['user_id'])->first();
+        $array = Record::get()->toArray();
     }
 }
