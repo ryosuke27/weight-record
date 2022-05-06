@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Types;
 
+use App\Models\Record;
+
+use GraphQL;
+use GraphQL\GraphQL as GraphQLGraphQL;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
@@ -11,25 +15,28 @@ class RecordType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'Record',
-        'description' => 'A type'
+        'description' => 'A type',
+        'model' => Record::class
     ];
+
+    public function types(): array
+    {
+        return [
+            GraphQL::type('Record'),
+        ];
+    }
 
     public function fields(): array
     {
         return [
-            'id' => [
-                'type' => Type::nonNull(Type::int()),
-                'description' => 'ID of user',
-                'alias' => 'id'
-            ],
             'user_id' => [
-                'type' => Type::int()
+                'type' => Type::listOf(Type::int())
             ],
             'weight' => [
-                'type' => Type::int()
+                'type' => Type::listOf(Type::int())
             ],
             'created_at' => [
-                'type' => Type::string()
+                'type' => Type::listOf(Type::string())
             ]
         ];
     }
